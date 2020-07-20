@@ -1,0 +1,230 @@
+\documentclass[journal]{vgtc}                % final (journal style)
+%\documentclass[review,journal]{vgtc}         % review (journal style)
+%\documentclass[widereview]{vgtc}             % wide-spaced review
+%\documentclass[preprint,journal]{vgtc}       % preprint (journal style)
+
+%% Uncomment one of the lines above depending on where your paper is
+%% in the conference process. ``review'' and ``widereview'' are for review
+%% submission, ``preprint'' is for pre-publication, and the final version
+%% doesn't use a specific qualifier.
+
+%% Please use one of the ``review'' options in combination with the
+%% assigned online id (see below) ONLY if your paper uses a double blind
+%% review process. Some conferences, like IEEE Vis and InfoVis, have NOT
+%% in the past.
+
+%% Please use the ``preprint''  option when producing a preprint version
+%% for sharing your article on an open access repository
+
+%% Please note that the use of figures other than the optional teaser is not permitted on the first page
+%% of the journal version.  Figures should begin on the second page and be
+%% in CMYK or Grey scale format, otherwise, colour shifting may occur
+%% during the printing process.  Papers submitted with figures other than the optional teaser on the
+%% first page will be refused. Also, the teaser figure should only have the
+%% width of the abstract as the template enforces it.
+
+%% These few lines make a distinction between latex and pdflatex calls and they
+%% bring in essential packages for graphics and font handling.
+%% Note that due to the \DeclareGraphicsExtensions{} call it is no longer necessary
+%% to provide the the path and extension of a graphics file:
+%% \includegraphics{diamondrule} is completely sufficient.
+%%
+\ifpdf%                                % if we use pdflatex
+  \pdfoutput=1\relax                   % create PDFs from pdfLaTeX
+  \pdfcompresslevel=9                  % PDF Compression
+  \pdfoptionpdfminorversion=7          % create PDF 1.7
+  \ExecuteOptions{pdftex}
+  \usepackage{graphicx}                % allow us to embed graphics files
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg} % for pdflatex we expect .pdf, .png, or .jpg files
+\else%                                 % else we use pure latex
+  \ExecuteOptions{dvips}
+  \usepackage{graphicx}                % allow us to embed graphics files
+  \DeclareGraphicsExtensions{.eps}     % for pure latex we expect eps files
+\fi%
+
+%% it is recomended to use ``\autoref{sec:bla}'' instead of ``Fig.~\ref{sec:bla}''
+\graphicspath{{figures/}{pictures/}{images/}{./}} % where to search for the images
+
+\usepackage{microtype}                 % use micro-typography (slightly more compact, better to read)
+\PassOptionsToPackage{warn}{textcomp}  % to address font issues with \textrightarrow
+\usepackage{textcomp}                  % use better special symbols
+\usepackage{mathptmx}                  % use matching math font
+\usepackage{times}                     % we use Times as the main font
+\renewcommand*\ttdefault{txtt}         % a nicer typewriter font
+\usepackage{cite}                      % needed to automatically sort the references
+\usepackage{tabu}                      % only used for the table example
+\usepackage{booktabs}                  % only used for the table example
+%% We encourage the use of mathptmx for consistent usage of times font
+%% throughout the proceedings. However, if you encounter conflicts
+%% with other math-related packages, you may want to disable it.
+
+%% In preprint mode you may define your own headline. If not, the default IEEE copyright message will appear in preprint mode.
+%\preprinttext{To appear in IEEE Transactions on Visualization and Computer Graphics.}
+
+%% In preprint mode, this adds a link to the version of the paper on IEEEXplore
+%% Uncomment this line when you produce a preprint version of the article 
+%% after the article receives a DOI for the paper from IEEE
+%\ieeedoi{xx.xxxx/TVCG.201x.xxxxxxx}
+
+%% If you are submitting a paper to a conference for review with a double
+%% blind reviewing process, please replace the value ``0'' below with your
+%% OnlineID. Otherwise, you may safely leave it at ``0''.
+\onlineid{1226}
+
+%% declare the category of your paper, only shown in review mode
+\vgtccategory{Research}
+%% please declare the paper type of your paper to help reviewers, only shown in review mode
+%% choices:
+%% * algorithm/technique
+%% * application/design study
+%% * evaluation
+%% * system
+%% * theory/model
+\vgtcpapertype{Evaluation}
+
+%%%%%%%%%%  REMCO'S MACROS  %%%%%%%%%%%%%%%%
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
+\usepackage[normalem]{ulem}
+\definecolor{mred}{rgb}{.80,.12,.30}
+\definecolor{MRED}{rgb}{.80,.12,.30}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\definecolor{purple}{rgb}{.75,0,.85}
+\definecolor{pistachio}{rgb}{0.58, 0.77, 0.45}
+
+\definecolor{bar-blue}{HTML}{80b1d3}
+\definecolor{bar-cball}{HTML}{66c2a5}
+\definecolor{bar-static}{HTML}{fc8d62}
+\definecolor{bar-cbnone}{HTML}{8da0cb}
+\definecolor{bar-drag}{HTML}{e78ac3}
+\definecolor{bar-hover}{HTML}{a6d854}
+\definecolor{bar-tooltip}{HTML}{ffd92f}
+\definecolor{bar-lowsa}{HTML}{1f78b4}
+\definecolor{bar-highsa}{HTML}{a6cee3}
+
+\newif\ifnotes
+\notestrue
+
+\newcommand{\remco}[1]{\ifnotes{\textcolor{mred}{(Remco: #1)}}\fi}
+\newcommand{\ab}[1]{\ifnotes{\leavevmode\color{pistachio}{(Ab: #1)}}\else{#1}\fi}
+\newcommand{\shan}[1]{\ifnotes{\textcolor{blue}{(Shannon: #1)}}\else{#1}\fi}
+\newcommand{\ao}[1]{\ifnotes{\textcolor{orange}{(ao: #1)}}\fi}
+
+\let\origcite\cite
+\renewcommand{\cite}[1]{\ifnotes\mbox{\origcite{#1}}\else \origcite{#1}\fi}
+\newcommand{\strike}[1]{\ifnotes{\color{mred}{\texorpdfstring{\sout{#1}}{#1}}}\fi}
+\newcommand{\strikeg}[1]{\ifnotes{\color{grey}{\texorpdfstring{\sout{#1}}{#1}}}\fi}
+\newcommand{\add}[1]{\ifnotes{\leavevmode\color{mred}{#1}}\else{#1}\fi}
+\newcommand{\replace}[2]{\ifnotes{\strikeg{#1}\add{#2}}\else{#2}\fi}
+
+%%%%%%%%%%  END REMCO'S MACROS  %%%%%%%%%%%%%%%%
+
+%%PACKAGES
+\usepackage{comment}
+\usepackage{float}
+\usepackage{arydshln}
+\usepackage{threeparttable}
+\usepackage{enumitem}
+\usepackage{hang}
+\usepackage{multirow}
+\setlist{nosep}
+\usepackage{subcaption}
+\usepackage{bchart}
+\usepackage[skip=5pt]{caption}
+
+
+%% Paper title.
+\title{Does Interaction Improve Bayesian Reasoning with Visualization?}
+
+%% This is how authors are specified in the journal style
+
+%% indicate IEEE Member or Student Member in form indicated below
+\author{Ab Mosca, Alvitta Ottley, Remco Chang}
+\authorfooter{
+% insert punctuation at end of each item
+\item
+Ab Mosca is with Tufts University. E-mail: amosca01@cs.tufts.edu.
+\item
+ Alvitta Ottley is with Washington University in St. Louis. E-mail: alvitta@wustl.edu.
+\item
+ Remco is with Tufts University. E-mail: remco@cs.tufts.edu.
+}
+
+%other entries to be set up for journal
+\shortauthortitle{Mosca \MakeLowercase{\textit{et al.}}: Does Interaction Improve Bayesian Reasoning with Visualization?}
+%\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
+
+%% Abstract section.
+\abstract{
+ \input{sections/abstract.tex}
+ } % end of abstract
+
+%% Keywords that describe your work. Will show as 'Index Terms' in journal
+%% please capitalize first letter and insert punctuation after last keyword
+\keywords{Data Analysis, Reasoning, Problem Solving, Decision Making, Interaction Design, Human-Subjects Quantitative Studies}
+
+%% ACM Computing Classification System (CCS). 
+%% See <http://www.acm.org/class/1998/> for details.
+%% The ``\CCScat'' command takes four arguments.
+
+\CCScatlist{ % not used in journal version
+ \CCScat{K.6.1}{Management of Computing and Information Systems}%
+{Project and People Management}{Life Cycle};
+ \CCScat{K.7.m}{The Computing Profession}{Miscellaneous}{Ethics}
+}
+
+%% Uncomment below to include a teaser figure.
+%\teaser{
+%  \centering
+%  \includegraphics[width=\linewidth]{CypressView}
+%  \caption{In the Clouds: Vancouver from Cypress Mountain. Note that the teaser may not be wider than the abstract block.}
+%	\label{fig:teaser}
+%}
+
+%% Uncomment below to disable the manuscript note
+%\renewcommand{\manuscriptnotetxt}{}
+
+%% Copyright space is enabled by default as required by guidelines.
+%% It is disabled by the 'review' option or via the following command:
+% \nocopyrightspace
+
+
+\vgtcinsertpkg
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% START OF THE PAPER %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% The ``\maketitle'' command must be the first command after the
+%% ``\begin{document}'' command. It prepares and prints the title block.
+
+%% the only exception to this rule is the \firstsection command
+\firstsection{Introduction}
+
+\maketitle
+
+%% \section{Introduction} %for journal use above \firstsection{..} instead
+\input{sections/introduction.tex}
+\input{sections/related.tex}
+\input{sections/goals.tex} 
+\input{sections/pilot.tex}
+%\input{sections/full_study.tex}
+%\input{sections/post_hoc.tex}
+\input{sections/discussion.tex}
+\input{sections/conclusion.tex}
+
+%% if specified like this the section will be committed in review mode
+\acknowledgments{
+This work was supported by a grant from XYZ (\# 12345-67890).
+}
+
+\bibliographystyle{abbrv}
+%\bibliographystyle{abbrv-doi}
+%\bibliographystyle{abbrv-doi-narrow}
+%\bibliographystyle{abbrv-doi-hyperref}
+%\bibliographystyle{abbrv-doi-hyperref-narrow}
+
+\bibliography{main}
+\end{document}
+

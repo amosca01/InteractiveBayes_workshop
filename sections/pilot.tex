@@ -1,0 +1,313 @@
+
+\section{Experiment}
+%\strikeg{The design space for adding interaction to a Bayesian reasoning visualization is large. Micallef et al.~\cite{micallef2012Assessing}, for example, examined six different representations for communicating Bayesian reasoning} \remco{what do the 6 representations have to do with studying interactions? I get what you mean, but these two sentences don't immediately gel. I suggest to delete}. 
+Although interaction is commonly used in data visualization, efforts to define \textit{interactivity} are ongoing~\cite{dimara2020What}. Additionally, there is no consensus on the best visualization for Bayesian reasoning~\cite{micallef2012Assessing, khan2015Benefits, ottley2016Bayesian}. As a result, the design space for interactive Bayesian reasoning visualizations is large. 
+For this experiment, we simplify the visualization design space by focusing on variants of \textit{icon arrays} -- one of the most popular and well-studied visualizations in this context~\cite{micallef2012Assessing,ottley2016Bayesian,ottley2019Curious}. Furthermore, we narrow the interaction design space to a single category. Following prior work that tested an interactive Bayesian visualization~\cite{tsai2011Interactive}, we add \textit{checkboxes} which allow the user to hide or show visual elements, and create a more explicit link between the text and the graphical encodings. In particular, this experiment examinse whether adding interactive \textit{checkboxes} to a static visualization (\textit{icon array}) improves accuracy in a Bayesian reasoning task, and whether the underlying static visualization (variations of \textit{icon array}) and users' spatial ability modulate the effectiveness of the interaction. %
+
+\subsection{Visualization Designs}
+We present users with a Bayesian reasoning problem concerning a disease in the population and the false positive and negative rates associated with testing for the disease (similar to Ottley et al.~\cite{ottley2016Bayesian}). Each stimulus is an icon array that encodes the four key sub-populations of the problem: \textsc{Have Disease}, \textsc{Do Not Have Disease}, \textsc{Test Positive}, and \textsc{Test Negative}. 
+Examples of interactive and static stimuli are shown in Table \ref{tab:tabPilotVis}. Below, we describe each experimental factor: 
+
+\begin{itemize}
+    \item \textbf{base visualization}: \{ \textit{grouped}, \textit{aligned}, \textit{randomized}  \}
+    \item \textbf{interaction}: \{ \textit{interactive (cbAll)}, \textit{static} \}
+\end{itemize}
+
+
+\subsubsection{Base Visualizations}
+
+We observe three primary designs of icon arrays in the literature which were loosely based on theories for how to facilitate Bayesian reasoning. For example, some researchers propose that representing randomness can more accurately communicate the inherent uncertainly in the problem space~\cite{han2011Representing}. Others hypothesize that spatially grouping visual elements aids reasoning~\cite{micallef2012Assessing}. Based on these theories, we design three variations for \textit{icon arrays} by changing the types of contextual placements of icons (see examples in Table~\ref{tab:pilotDemo}).  
+Following guidelines of Bertin\cite{bertin}, background color was used to differentiate between members of the population who \textsc{Have Disease} versus \textsc{Do Not Have Disease}, and icon color was used to differentiate between members of the population who \textsc{Test Positive} versus \textsc{Test Negative}. The base visualizations differed in their use of Gestalt principles~\cite{gestalt} to perceptually group the sub-populations of interest in the Bayesian reasoning problem. Specifically, Gestalt principles guided the design of each base visualization as follows: 
+
+\begin{compacthang}
+	\item \textit{Grouped: }We use spatial grouping to show the sub-populations and the relationship between visual elements. The \textit{grouped} icon array shows the \textsc{Have Disease} and \textsc{Do Not Have Disease} sub-populations into two separate grids of icons. Additionally, the \textsc{Test Positive} sub-population is in a block aligned at the top left of the visualization. This design is similar to the hybrid Euler-frequency grid diagram used by Micallef et al.\cite{micallef2012Assessing}. 
+	
+	\item \textit{Aligned: }The \textit{aligned} icon array shows all icons in one 5 X 20 grid. It aligns the sub-population \textsc{Have Disease} in a block at the top left of the grid, and the sub-population \textsc{Test Positive} in a block at the top middle of the grid. A similar design was used by Brase et al.~\cite{brase2009Pictorial}, and Ottley et al.~\cite{ottley2016Bayesian,ottley2019Curious}.
+	
+	\item \textit{Randomized: }The \textit{randomized} icon array does not spatially group any sub-populations; icons representing members of each of the four  sub-populations are randomly distributed in a 5 X 20 grid. Similar designs are used in medical risk communication by Han et al.~\cite{han2011Representing}.
+\end{compacthang}
+
+
+\subsubsection{Adding Interaction}
+Interactivity was added via checkboxes (similar to Tsai et al.~\cite{tsai2011Interactive}) that allowed users to show (checked) or not show (unchecked) key sub-populations on the icon array. As a default, all checkboxes were checked, and one of \{\textsc{Have Disease}, \textsc{Do Not Have Disease}\} as well as one of \{\textsc{Test Positive}, \textsc{Test Negative}\} had to be checked for any sub-populations to show on the visualization. We call this interaction technique \textit{cbAll} (which stands for checkbox where all boxes are initially checked). 
+
+\subsection{Task}
+\label{sec:questions}
+
+We ran a between-subjects 2 \{\textit{interaction}\} \textsc{x} 3 \{\textit{base visualization}\} factor experiment. The experimental task was to answer a Bayesian reasoning problem given textual and visual representations of the problem. The textual description and question components of each stimulus were consistent with those used by Ottley et al.~\cite{ottley2016Bayesian}.
+ 
+\begin{compacthang}
+\item \textit{Textual description}: There is a newly discovered disease, Disease X, which is transmitted by a bacterial infection found in the population. There is a test to detect whether or not a person has the disease, but it is not perfect. Here is some information about the current research on Disease X and efforts to test for the infection that causes it.  
+\smallskip 
+
+There is a total of 100 people in the population. Out of the 100 people in the population, 6 people actually have the disease. Out of these 6 people, 4 will receive a positive test result and 2 will receive a negative test result. On the other hand, 94 people do not have the disease (i.e., they are perfectly healthy). Out of these 94 people, 16 will receive a positive test result and 78 will receive a negative test result.  
+\item \textit{Questions}: \\
+	(a) How many people will test positive? \_ \_ \_ \\
+	(b) Of those who test positive, how many will actually have the disease? \_ \_ \_ 
+\end{compacthang}
+
+\subsection{Participants}
+We recruited 530 participants from Amazon Mechanical Turk. Participation was restricted to workers in the United States with an approval rating of greater than $90$ percent. Participants were paid a base rate of $\$1.80$ for participation plus a bonus of $\$0.10$ for every correct answer. 
+
+Before analysis, participants who skipped entire sections of the experiment or did not follow instructions ($N = 3$), and participants who self-identified as colorblind  ($N = 55$) were dropped from the data set. 
+%Because our experiment explicitly focuses on comparing the \textit{use} of an interactive visualization to a static visualization, we dropped participants who saw an interactive stimulus but did not interact with it ($N = 141$). 
+This left $N = 472$ participants distributed among stimuli as shown in Table \ref{tab:pilotN}. Demographics of participants are shown in Table \ref{tab:pilotDemo}. 
+
+\subsection{Procedure}
+The experiment followed an approved protocol per Tufts University's IRB, and was posted as a HIT on Amazon Mechanical Turk\footnote{Link to experiment: https://valt.cs.tufts.edu/studies/br4/public/.}. Workers who accepted the HIT followed a link to the experiment. After providing informed consent, participants were taken to an instruction page explaining the experiment.
+%that they would be asked to look at a text description and static or interactive visualization of a reasoning problem, and then asked to answer several questions based on the information presented. 
+This page demonstrated what the legend for a \textit{static} visualization would look like versus the \textit{cbAll} legend. After the instruction page, participants were shown one of the six experimental stimuli. Participants could take as much time with the stimulus as they wanted before clicking a button to view the questions to answer. 
+Clicking said button started an experimental timer that ended when participants submitted their answers.
+After completing the main task participants were asked to complete a short demographic questionnaire, the paper folding test (VZ-2) from Ekstrom, French, \& Hardon\cite{paperFolding} to measure spatial ability, and to provide any additional feedback they wished. 
+
+\begin{table}[t!]
+  \resizebox{\linewidth}{!}{
+  \centering
+\begin{tabular}{c|ccc|c}
+        & grouped & aligned & randomized & interactive or not total \\ \hline
+\textit{cbAll}   & 64     & 100     & 82   & 246 \\ \hline
+\textit{static}  & 86    & 70    & 70  &  226 \\ \hline
+base total & 150 & 170 & 152 & 472
+\end{tabular}}
+\caption{Sample sizes (N) for each condition.}
+\label{tab:pilotN}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h!]
+\begin{threeparttable}[b]
+\begin{tabular}{ll}
+\hline
+N                                                                                & 331                                                                                                                                                    \\ \hline
+Age                                                                              & \begin{tabular}[c]{@{}l@{}}18-24: 6.4\%, 25-39: 64.4\%, 40-49: 17.2\%, \\ 50-59:7.6\%, 60+: 4.4\%\end{tabular}                                     \\ \hline
+Gender                                                                           & \begin{tabular}[c]{@{}l@{}}Female: 38.3\%, Male: 61.0\%, \\ Non-Binary: 0.8\%\end{tabular}                                                             \\ \hline
+Education                                                                        & \begin{tabular}[c]{@{}l@{}}High School: 28.6\%, Bachelors: 56.6\%, \\ Masters: 10.2\%, PhD: 1.5\%, Other: 3.2\%\end{tabular}                            \\ \hline
+\begin{tabular}[c]{@{}l@{}}Expertise with \\ Statistical \\ Visualization\end{tabular}                  & \begin{tabular}[c]{@{}l@{}}Novice: 21.4\%, Low-intermediate: 20.1\%, \\ Intermediate: 32.3\%, \\ High-intermediate: 17.4\%, Expert: 8.5\%\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Statistical Training \\ 1 (none) - \\ 5 (highly trained) \end{tabular} & \begin{tabular}[c]{@{}l@{}}1: 32.4\%, 2: 22.5\%, 3: 16.7\%, \\ 4: 15.3\%, 5: 12.5\%\end{tabular}                                                         \\ \hline
+\end{tabular}
+\end{threeparttable}
+\caption{Participant demographics.}
+\label{tab:pilotDemo}
+\end{table}
+          
+\subsection{Hypotheses}
+Analysis focuses on answering \textbf{RQ1}, \textbf{RQ2}, and \textbf{RQ3}.
+Based on prior work we postulate that the interactive \textit{checkbox} visualization will act as an external representation of users' reasoning process, and therefore reduce cognitive load~\cite{liu2010Mental, pohl2012User}. We expect reduced cognitive load to result in higher accuracy on the Bayesian reasoning task (\textbf{RQ1}). Additionally, we anticipate the extent to which icons in the base visualizations are perceptually grouped will affect cognitive load (i.e. the \textit{grouped} and \textit{aligned} base visualizations which leverage Gestalt principles to perceptually group icons should induce less cognitive load than the \textit{randomized} (un-grouped) base visualization). Thus the reduction of cognitive load from adding interaction (and associated performance gains) should be modulated by base visualization (\textbf{RQ2}). Finally, we expect users with low spatial ability will benefit most from the addition of interaction (\textbf{RQ3}). Ottley et al.~\cite{ottley2016Bayesian} showed people with low spatial ability perform very poorly on Bayesian reasoning tasks. We postulate that the additional cognitive offload afforded by interaction will help users with low spatial ability perform Bayesian reasoning more accurately. We propose the following hypotheses:
+
+\begin{compacthang} 
+	\item \textbf{H1}: Participants who use an interactive visualization will be more accurate in answering the Bayesian reasoning question than participants who saw a static visualization. 
+	\item \textbf{H2}: Differences in accuracy will be modulated by base (\textit{grouped, aligned, randomized}) visualization design. 
+	\item \textbf{H3.1}: Participants with high spatial ability who use an interactive visualization will be as accurate in answering the Bayesian reasoning question as participants who saw a static visualization. 
+	\item \textbf{H3.2}: Participants with low spatial ability who use an interactive visualization will be more accurate in answering the Bayesian reasoning question than participants who saw a static visualization. 
+\end{compacthang}
+
+\subsection{Findings}
+To test our hypotheses, we analyze participant's responses to the questions detailed in Section~\ref{sec:questions}. Consistent with prior work\cite{ottley2016Bayesian, ottley2019Curious}, participants were considered correct only if they answered both parts of the two-part question correctly (that is, 20 people will test positive, and of those 4 will actually have the disease). Our analysis script is included in supplemental materials, however under the guidelines of our IRB we cannot release collected data.
+
+\subsubsection{Does adding interaction to a static visualization improve accuracy on Bayesian reasoning task?}
+\label{sec:exp1_analysis}
+
+Figure \ref{fig:exp1_static_vs_int} shows overall the proportion of correct answers for the \textit{interactive} and \textit{static} conditions. We observe that $53\%$ of the participants in the \textit{cbAll} condition entered the correct answers, whereas the \textit{static} visualization had a $57\%$ correct response rate.
+We perform a Chi-squared test of $accuracy \sim interactive\_or\_static$, and find no statistically significant difference in accuracy between participants using the \textit{cbAll} versus the \textit{static} visualization ($\chi^2(1, N = 472) = 0.85, p = 0.34$). This suggests that \textit{interaction does not improve reasoning on a Bayesian reasoning task} thus we \textbf{reject H1}.    
+
+\begin{figure}[h!]
+    \centering
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    \bcbar[label=\textit{cbAll}, color=bar-blue]{.53}
+    \bcskip{3pt}
+    \bcbar[label=\textit{static}, color=bar-blue]{.57}
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{Proportion of participants answering the Bayesian reasoning task correctly given an interactive (\textit{cbAll}) versus \textit{static} visualization.}
+    \label{fig:exp1_static_vs_int}
+\end{figure}
+
+Next, we look at how many participants in the \textit{cbAll} condition actually interacted with the visualization they saw. Out of the $246$ participants assigned to \textit{cbAll}, only $43\%$ used the checkboxes on the visualization. Seventy percent of the participants who interacted with the visualization answered correctly, while only $40\%$ of those who did not interact answered correctly, as shown in Figure \ref{fig:exp1_interacted_vs_did_not}.
+
+We perform a Chi-squared test of $accuracy \sim interacted\_or\_not$, and find a statistically significant difference in accuracy between participants who did and did not interact with the \textit{cbAll} visualization ($\chi^2(1, N = 246) = 22.85, p < 0.001$). Additionally, a Kruskal-Wallis\footnote{We performed a Kruskal-Wallis test because the Shapiro-Wilk Normality test showed this distribution of completion time differed significantly from normal ($W = 0.25, p < 0.01$).} test showed a small significant difference in completion time between participants who did and did not interact ($H(1) = 3.81, p = 0.05$). Overall, participants who did interact completed the task faster than those who did not interact (interacted: $\mu = 47.5s$, $\sigma = 31.0s$; did not interact: $\mu = 52.6s$, $\sigma = 115.2s$). 
+
+\begin{figure}[h!]
+    \centering
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    \bcbar[label=\textit{Interacted}, color=bar-blue]{.70}
+    \bcskip{3pt}
+    \bcbar[label=\textit{Did Not Interact}, color=bar-blue]{.40}
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{Proportion of participants assigned to \textit{cbAll} answering the Bayesian reasoning task correctly grouped by if they interacted or not.}
+    \label{fig:exp1_interacted_vs_did_not}
+\end{figure}
+
+%retain all participants even those who did not interact 
+It is impossible to be certain if participants in the \textit{cbAll} condition who did not interact were simply negligent participants, or if there is some other factor at play. We could drop participants assigned to \textit{cbAll} who did not interact from our analysis in order to specifically compare Bayesian reasoning \textit{using} an interactive visualization to Bayesian reasoning with a static visualization, however this would likely bias the interactive condition to include only very diligent participants, while the static condition would be a mix of diligent and non-diligent workers. Therefore, we continue our analysis without dropping any participants assigned \textit{cbAll} who did not interact. 
+
+\subsubsection{Is the effect of interaction modulated by the underlying static visualization design?}
+
+To investigate whether base visualization had an effect on participants' accuracy independently of interaction we perform a Chi-squared test of $accuracy \sim base\_visualization$. We find no significant difference in accuracy by base ($\chi^2(2, N = 472) = 2.15, p = 0.34$). As shown in Figure~\ref{fig:exp1_bases}, we observe near-equal proportions of correct answers for the three base representations, suggesting that the \textit{variations in the design of icon arrays had no significant effect on accuracy.}
+
+\begin{figure}[h!]
+    \centering
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    \bcbar[label=\textit{grouped}, color=bar-blue]{.57}
+    \bcskip{3pt}
+    \bcbar[label=\textit{aligned}, color=bar-blue]{.57}
+    \bcskip{3pt}
+    \bcbar[label=\textit{randomized}, color=bar-blue]{.50}
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{Proportion of participants answering the Bayesian reasoning task correctly by base visualization.}
+    \label{fig:exp1_bases}
+\end{figure}
+
+To better understand the nuances of how a base visualization may affect the value-add of interaction we stratify the data by base visualization (\textit{grouped, aligned, randomized}) and perform a Chi-squared test of $accuracy \sim interactive\_or\_static$ within each base. Proportions of correct answers by interactive vs. static and base visualization are shown in Figure \ref{fig:exp1_static_vs_int_by_base}. 
+
+\begin{figure}[h!]
+    \centering
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    \bcbar[text=\textit{cbAll}, color=bar-cball]{.56}
+    \bclabel{\textit{grouped}}
+    \bcbar[text=\textit{static}, color=bar-static]{.58}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{cbAll}, color=bar-cball]{.59}
+    \bclabel{\textit{aligned}}
+    \bcbar[text=\textit{static}, color=bar-static]{.54}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{cbAll}, color=bar-cball]{.42}
+    \bclabel{\textit{randomized}}
+    \bcbar[text=\textit{static}, color=bar-static]{.59}
+    
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{Proportion of participants answering the Bayesian reasoning task correctly by interaction and base visualization.} 
+    \label{fig:exp1_static_vs_int_by_base}
+\end{figure}
+
+
+We find no statistically significant difference in accuracy between participants assigned \textit{cbAll} versus \textit{static} in the grouped or aligned base visualizations (grouped: $\chi^2(1, N = 150) = 0.05, p = 0.82$; aligned: ($\chi^2(1, N = 170) = 0.37, p = 0.54$)). This suggests that \textit{within the grouped and aligned base visualizations interaction does not improve accuracy on a Bayesian reasoning task}.  
+
+In contrast, we find a statistically significant difference in accuracy between participants assigned \textit{cbAll} versus \textit{static} in the randomized base visualization ($\chi^2(1, N = 152) = 3.81, p = 0.05$). Interestingly, the proportion of participants who were correct using the \textit{cbAll} visualization is less than that for participants using the \textit{static} visualization (Figure \ref{fig:exp1_static_vs_int_by_base}). This suggests that \textit{within the randomized base visualization interaction significantly decreases accuracy on a Bayesian reasoning task}. 
+
+\medskip 
+These stratified analyses suggest that \textit{the value-add of interaction is modulated by base visualization design}, thus we \textbf{accept H2}.   
+
+\subsubsection{Does the effect of interaction change based on a user's spatial ability?}
+To identify participants with high versus low spatial ability we split our data across median spatial ability ($5.75$), similar to~\cite{ottley2016Bayesian}. We perform a Chi-squared test of $accuracy \sim interactive\_or\_static$ within each spatial ability group. Figure \ref{fig:exp2_sa_by_interaction} shows proportions of correct answers by interactive or static and participants' spatial ability.  
+
+%\paragraph{High Spatial Ability}
+Within both spatial ability groups we find no statistically significant difference in accuracy between participants assigned the \textit{cbAll} visualization and the \textit{static} visualization (high spatial ability: ($\chi^2(1, N =  239) = 1.81, p = 0.18$), low spatial ability: ($\chi^2(1, N =  233) = 0.01, p = 0.93$)). This suggests that \textit{for people with high and low spatial ability interaction does not significantly affect accuracy on Bayesian inference}. 
+
+%\paragraph{Low Spatial Ability}
+%Within the low spatial ability group we find no statistically significant difference in accuracy between participants assigned the \textit{cbAll} visualization and the \textit{static} visualization ($\chi^2(1, N =  233) = 0.01, p = 0.93$), suggesting that \textit{for people with low spatial ability interaction does not affect accuracy on Bayesian inference}. 
+
+\begin{figure}[h!]
+    \centering
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    
+    \bcbar[text=\textit{High SA},   color=bar-highsa]{.73}
+    \bclabel{\textit{cbAll}}
+    \bcbar[text=\textit{Low SA},   color=bar-lowsa]{.33}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{High SA},   color=bar-highsa]{.80}
+    \bclabel{\textit{static}}
+    \bcbar[text=\textit{Low SA},   color=bar-lowsa]{.33}
+    
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{Portion of participants answering the Bayesian reasoning task correctly by spatial ability (SA) and \textit{cbAll} or \textit{static} visualization. } 
+    \label{fig:exp2_sa_by_interaction}
+\end{figure}
+
+\subsubsection{Does underlying static visualization design moderate the effect of interaction techniques within spatial ability groups?}
+
+Within each spatial ability group we compare participants' accuracy across bases with a Chi-squared test of $accuracy \sim base\_visualization$. Figure \ref{fig:exp2_bases_by_sa} shows proportions of correct answers for each base visualization by participants' spatial ability. Within both groups we find no significant difference in accuracy by base (high spatial ability: ($\chi^2(2, N = 239) = 2.45, p = 0.29$), low spatial ability: ($\chi^2(2, N = 233) = 5.40, p = 0.07$)), suggesting that \textit{for people with high and low spatial ability, performance on a Bayesian reasoning task is not affected by design of the underlying static visualization}. 
+
+\begin{figure}[h]
+    \centering
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    
+    \bcbar[text=\textit{High SA},   color=bar-highsa]{.82}
+    \bclabel{\textit{grouped}}
+    \bcbar[text=\textit{Low SA},   color=bar-lowsa]{.37}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{High SA},   color=bar-highsa]{.76}
+    \bclabel{\textit{aligned}}
+    \bcbar[text=\textit{Low SA},   color=bar-lowsa]{.38}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{High SA},   color=bar-highsa]{.71}
+    \bclabel{\textit{randomized}}
+    \bcbar[text=\textit{Low SA},   color=bar-lowsa]{.22}
+
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{Proportion of participants answering the Bayesian reasoning task correctly by base visualization for each spatial ability group.}
+    \label{fig:exp2_bases_by_sa}
+\end{figure}
+
+To investigate the effect of interaction technique coupled with underlying static visualization design on participants with high and low spatial ability, we stratify the data by spatial ability group (high, low) and base visualization (grouped, aligned, randomized) and perform a Chi-squared test of $accuracy \sim interaction\_technique$.
+Proportions of correct answers by interaction technique, base visualization, and spatial ability are shown in Figure \ref{fig:exp2_corr_by_int_base_SA}. 
+
+For participants with high spatial ability assigned to the the \textit{randomized} base we found a significant difference in accuracy between those assigned the \textit{cbAll} and \textit{static} visualizations ($\chi^2(1, N = 87) = 4.26, p < 0.05$). For all other cases, we found no significant difference in participants' accuracy between between the \textit{cbAll} and \textit{static} visualizations (high spatial ability--grouped: ($\chi^2(1, N = 67) = 0.01, p = 0.75$), aligned: ($\chi^2(1, N = 85) = 0.001, p = 0.97$); low spatial ability--grouped: ($\chi^2(1, N = 83) = 0.04, p = 0.84$), aligned: ($\chi^2(1, N = 85) = 0.001, p = 0.98$), randomized:($\chi^2(1, N = 65) = 0.01, p = 0.91$)). 
+
+
+\begin{figure}[h!]
+    \begin{subfigure}[t]{0.52\columnwidth}
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    \bcbar[text=\textit{cbAll},  color=bar-cball]{.38}
+    \bclabel{\textit{grouped}}
+    \bcbar[text=\textit{static},  color=bar-static]{.36}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{cbAll},  color=bar-cball]{.38}
+    \bclabel{\textit{aligned}}
+    \bcbar[text=\textit{static},  color=bar-static]{.38}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{cbAll},  color=bar-cball]{.21}
+    \bclabel{\textit{randomized}}
+    \bcbar[text=\textit{static},  color=bar-static]{.22}
+    
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{\textbf{Low spatial ability}}
+    \label{fig:exp2_corr_by_int_base_SA_low}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.48\columnwidth}
+    \scalebox{0.7}{
+    \begin{bchart}[step=.25,max=1,width=\linewidth]
+    \bcbar[text=\textit{cbAll},  color=bar-cball]{.84}
+    \bcbar[text=\textit{static},  color=bar-static]{.81}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{cbAll},  color=bar-cball]{.76}
+    \bcbar[text=\textit{static},  color=bar-static]{.77}
+    \bcskip{6pt}
+    
+    \bcbar[text=\textit{cbAll},  color=bar-cball]{.61}
+    \bcbar[text=\textit{static},  color=bar-static]{.81}
+    
+    \bcxlabel{Proportion of Correct Answers}
+    \end{bchart}}
+    \caption{\textbf{High spatial ability}}
+    \label{fig:exp2_corr_by_int_base_SA_high}
+    \end{subfigure}
+    \caption{Portion of participants in each spatial ability group answering the Bayesian reasoning task correctly given \textit{cbAll} or \textit{static} and base visualization.}
+    \label{fig:exp2_corr_by_int_base_SA}
+\end{figure}     
+
+These stratified results suggest that \textit{in certain cases adding interaction to a static visualization can detrimentally effect Bayesian reasoning for people with high spatial ability}, thus we \textbf{reject H3.1}. They also suggest that \textit{for people with low spatial ability performance on a Bayesian reasoning task is not affected by interaction}, thus we \textbf{reject H3.2}. 
+
